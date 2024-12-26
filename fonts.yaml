@@ -1,0 +1,61 @@
+fonts:
+  - family: Scala
+    fonts:
+      - asset: assets/fonts/scala-sans.ttf
+        weight: 400
+        style: normal
+      - asset: assets/fonts/scala.ttf
+        weight: 700
+        style: normal
+  - family: Din Offc Pro
+    fonts:
+      - asset: assets/fonts/din-offc-pro.ttf
+      - asset: assets/fonts/din-offc-pro-b.ttf
+      - asset: assets/fonts/din-offc-pro-bi.ttf
+      - asset: assets/fonts/din-offc-pro-i.ttf
+      - asset: assets/fonts/din-offc-pro-medium-sc.ttf
+      - asset: assets/fonts/din-offc-pro-medium-i-sc.ttf
+  - family: Harriet Text
+    fonts:
+      - asset: assets/fonts/harriet-text.ttf
+      - asset: assets/fonts/harriet-text-sc.ttf
+      - asset: assets/fonts/harriet-text-b.ttf
+      - asset: assets/fonts/harriet-text-b-sc.ttf
+      - asset: assets/fonts/harriet-text-bi.ttf
+      - asset: assets/fonts/harriet-text-bi-sc.ttf
+      - asset: assets/fonts/harriet-text-i.ttf
+      - asset: assets/fonts/harriet-text-i-sc.ttf
+  - family: Scala Sans Pro
+    fonts:
+      - asset: assets/fonts/SourceSansPro-Bold.ttf
+      - asset: assets/fonts/SourceSansPro-BoldItalic.ttf
+      - asset: assets/fonts/SourceSansPro-Italic.ttf
+      - asset: assets/fonts/SourceSansPro-Regular.ttf
+      - asset: assets/fonts/SourceSansPro-Semibold.ttf
+      - asset: assets/fonts/SourceSansPro-SemiboldItalic.ttf
+  - family: Tisa Offc Pro
+    fonts:
+      - asset: assets/fonts/tisa-offc-pro.ttf
+      - asset: assets/fonts/tisa-offc-pro-b.ttf
+      - asset: assets/fonts/tisa-offc-pro-bi.ttf
+      - asset: assets/fonts/tisa-offc-pro-i.ttf
+      
+  - family: Tisa SC Offc Pro
+    fonts:
+      - asset: assets/fonts/tisa-sc-offc-pro.ttf
+      - asset: assets/fonts/tisa-sc-offc-pro-b.ttf
+      - asset: assets/fonts/tisa-sc-offc-pro-bi.ttf
+      - asset: assets/fonts/tisa-sc-offc-pro-i.ttf
+
+  - family: Vollkorn
+    fonts:
+      - asset: assets/fonts/vollkorn.ttf
+      - asset: assets/fonts/vollkorn-b.ttf
+      - asset: assets/fonts/vollkorn-bi.ttf
+      - asset: assets/fonts/vollkorn-i.ttf
+        
+  - family: Livory
+    fonts:
+      - asset: assets/fonts/livory-bi.ttf
+      - asset: assets/fonts/livory-i.ttf
+      - asset: assets/fonts/livory-sc.ttf
