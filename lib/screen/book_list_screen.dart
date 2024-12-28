@@ -6,6 +6,7 @@ import 'package:book/widgets/section_title.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
+import 'package:gdpr_admob/gdpr_admob.dart';
 
 import '../config/environment.dart';
 
@@ -19,27 +20,45 @@ class BookListScreen extends StatefulWidget {
 }
 
 class _BookListScreenState extends State<BookListScreen> {
-  late BannerAd _bannerAd;
+  BannerAd? _bannerAd;
 
   @override
   void initState() {
     super.initState();
-    _loadAd();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final status = await GdprAdmob().getConsentStatus();
+      if (status == 'required') {
+        _showGDPRDialog();
+      } else {
+        _loadAd();
+      }
+    });
   }
 
   @override
   void dispose() {
-    _bannerAd.dispose();
+    _bannerAd?.dispose();
     super.dispose();
   }
 
+  _showGDPRDialog() {
+    final gdprAdmob = GdprAdmob();
+    gdprAdmob.initialize(
+      mode: DebugGeography.debugGeographyDisabled,
+      testIdentifiers: [],
+    ).then((onValue) {
+      print(onValue);
+    }).catchError((onError) {
+      print(onError);
+    });
+  }
+
   void _loadAd() {
-    final bannerAd = BannerAd(
+    BannerAd(
       size: AdSize.fluid,
       adUnitId: widget.adUnitId,
       request: const AdRequest(),
       listener: BannerAdListener(
-        // Called when an ad is successfully received.
         onAdLoaded: (ad) {
           if (!mounted) {
             ad.dispose();
@@ -53,12 +72,13 @@ class _BookListScreenState extends State<BookListScreen> {
         onAdFailedToLoad: (ad, error) {
           debugPrint('BannerAd failed to load: $error');
           ad.dispose();
+          // Handle failure (optional: display a fallback UI or message)
+          setState(() {
+            _bannerAd = null;
+          });
         },
       ),
-    );
-
-    // Start loading.
-    bannerAd.load();
+    ).load();
   }
 
   @override
@@ -95,13 +115,15 @@ class _BookListScreenState extends State<BookListScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 50.0,
-                  child: AdWidget(ad: _bannerAd),
-                ),
+                if (_bannerAd != null)
+                  SizedBox(
+                    height: 50.0,
+                    child: AdWidget(ad: _bannerAd!),
+                  )
+                else
+                  SizedBox(),
               ],
             );
-            /* ; */
           }
         },
       ),

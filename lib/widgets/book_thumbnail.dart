@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 class BookThumbnail extends StatelessWidget {
   final Book? book;
+
   const BookThumbnail(this.book, {super.key});
 
   @override
@@ -21,15 +22,17 @@ class BookThumbnail extends StatelessWidget {
         },
         child: Column(
           children: [
-            FadeInImage(
-              image: NetworkImage(book!.thumbnail),
-              width: 200.0,
-              placeholder: const AssetImage("assets/images/placeholder.png"),
+            FadeInImage.assetNetwork(
+              placeholder: 'assets/images/placeholder.png',
+              image: book!.thumbnail,
               imageErrorBuilder: (context, error, stackTrace) {
-                return Image.asset('assets/images/placeholder.png',
-                    fit: BoxFit.fitWidth);
+                return Image.asset(
+                  'assets/images/placeholder.png',
+                  fit: BoxFit.fitWidth,
+                );
               },
-              fit: BoxFit.fitWidth,
+              width: 200,
+              fit: BoxFit.fitHeight,
             ),
             const SizedBox(height: 16),
             Text(
