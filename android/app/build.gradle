@@ -38,6 +38,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        resValue "string", "app_title", dartDefines.APP_TITLE
         resValue "string", "admob_app_id", dartDefines.ADMOB_APP_ID
     }
 
